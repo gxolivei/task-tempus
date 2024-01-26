@@ -20,12 +20,24 @@ end
 
 def get_hours_input
   loop do
-    input = get_user_input("#{COLOR_BOLD}#{COLOR_GREEN}Enter the amount of time available in hours (minimum is 1 hour)#{COLOR_RESET}: ")
+    input = get_user_input("\n#{COLOR_BOLD}#{COLOR_GREEN}Enter the amount of time available in hours (minimum is 1 hour)#{COLOR_RESET}: ")
 
     if input.to_i.to_s == input && input.to_i.positive?
       return input.to_i
     else
-      puts "#{COLOR_BOLD}#{COLOR_RED}Invalid input. Please enter a valid positive number for hours.#{COLOR_RESET}"
+      puts "\n#{COLOR_BOLD}#{COLOR_YELLOW}Invalid input. Please enter a valid positive number for hours.#{COLOR_RESET}"
+    end
+  end
+end
+
+def get_non_empty_input(prompt)
+  loop do
+    input = get_user_input("#{COLOR_BOLD}#{COLOR_RED}#{prompt}#{COLOR_RESET}")
+    
+    if input.strip.empty?
+      puts "\n#{COLOR_BOLD}#{COLOR_YELLOW}Invalid input. Please enter a non-empty value.#{COLOR_RESET}"
+    else
+      return input
     end
   end
 end
@@ -73,11 +85,11 @@ def run_countdown
   puts "#{COLOR_BOLD}#{COLOR_RESET}This program helps you manage your time by providing countdowns for different task completion percentages."
   puts "#{COLOR_BOLD}#{COLOR_RESET}You can enter your information below to get started."
 
-  proceed = get_user_input("\n#{COLOR_BOLD}#{COLOR_YELLOW}Do you want to proceed? (Y/N):#{COLOR_RESET}").downcase
+  proceed = get_user_input("\n#{COLOR_BOLD}#{COLOR_YELLOW}Do you want to proceed? (Y/N): #{COLOR_RESET}").downcase
 
   if proceed == 'y'
-    dev_name = get_user_input("\nEnter your #{COLOR_BOLD}#{COLOR_RED}dev name#{COLOR_RESET}: ")
-    task = get_user_input("Enter the #{COLOR_BOLD}#{COLOR_RED}task#{COLOR_RESET}: ")
+    dev_name = get_non_empty_input("\nEnter your #{COLOR_BOLD}#{COLOR_RED}dev name#{COLOR_RESET}: ")
+    task = get_non_empty_input("\nEnter the #{COLOR_BOLD}#{COLOR_RED}task#{COLOR_RESET}: ")
     hours = get_hours_input
 
     clear_terminal
