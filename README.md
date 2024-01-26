@@ -6,7 +6,7 @@ Task Tempus is a time management tool designed to assist developers in optimizin
 
 - **Intuitive Interface:** Simple and straightforward command-line interaction.
 - **Personalized Countdowns:** Set countdowns based on the specified time availability for your tasks.
-- **Motivational Prompts:** Visual cues at 20%, 60%, and 80% completion to keep you motivated.
+- **Motivational Prompts:** Visual cues at any percentage you choose.
 - **Distraction-Free Terminal:** Clear terminal functionality for an uninterrupted focus.
 
 ## Demo
