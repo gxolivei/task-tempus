@@ -96,7 +96,7 @@ def display_user_details(dev_name, task, hours, custom_percentages)
   puts "\nTask: #{STYLES[:bold]}#{STYLES[:cyan]}#{task}#{STYLES[:reset]}"
   puts "Time Available: #{STYLES[:bold]}#{STYLES[:cyan]}#{hours} #{hours == 1 ? 'hour' : 'hours'}#{STYLES[:reset]}"
   puts "Deadline in #{STYLES[:bold]}#{STYLES[:cyan]}#{format('%02d:%02d:%02d', hours, 0, 0)}#{STYLES[:reset]}"
-  puts "Percentages selected: #{STYLES[:bold]}#{STYLES[:cyan]}#{custom_percentages.map { |percentage| "#{percentage}%" }.join(', ')}#{STYLES[:reset]}"
+  puts "Percentages tracked: #{STYLES[:bold]}#{STYLES[:cyan]}#{custom_percentages.map { |percentage| "#{percentage}%" }.join(', ')}#{STYLES[:reset]}"
   puts "\n"
 end
 
