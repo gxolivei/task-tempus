@@ -23,7 +23,7 @@ module InputHelpers
       input = get_user_input("#{STYLES[:bold]}#{STYLES[:red]}#{prompt}#{STYLES[:reset]}")
       if input.strip.empty?
         if prompt.include?("dev name")
-          puts "\n#{STYLES[:bold]}#{STYLES[:yellow]}Invalid input. Please enter your dev name.#{STYLES[:reset]}"
+          puts "\n#{STYLES[:bold]}#{STYLES[:yellow]}Invalid input. Please enter your name.#{STYLES[:reset]}"
         else
           puts "\n#{STYLES[:bold]}#{STYLES[:yellow]}Invalid input. Please enter the task.#{STYLES[:reset]}"
         end
