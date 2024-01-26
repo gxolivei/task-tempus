@@ -21,7 +21,7 @@ module UserInteraction
   end
 
   def get_custom_percentages
-    input = get_user_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter the percentages (comma-separated, e.g., 10,40,50,90):#{STYLES[:reset]} ")
+    input = get_user_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter the percentages you want to track(comma-separated, e.g., 10,40,50,90):#{STYLES[:reset]} ")
     input.split(',').map(&:to_i)
   end
 
@@ -36,8 +36,7 @@ module UserInteraction
   def display_user_details(dev_name, task, hours, custom_percentages)
     puts "\nThank you, #{STYLES[:bold]}#{STYLES[:cyan]}#{dev_name}!#{STYLES[:reset]} You've entered the following details:"
     puts "\nTask: #{STYLES[:bold]}#{STYLES[:cyan]}#{task}#{STYLES[:reset]}"
-    puts "Time Available: #{STYLES[:bold]}#{STYLES[:cyan]}#{hours} #{hours == 1 ? 'hour' : 'hours'}#{STYLES[:reset]}"
-    puts "Deadline in #{STYLES[:bold]}#{STYLES[:cyan]}#{format('%02d:%02d:%02d', hours, 0, 0)}#{STYLES[:reset]}"
+    puts "Deadline: #{STYLES[:bold]}#{STYLES[:cyan]}#{hours} #{hours == 1 ? 'hour' : 'hours'}#{STYLES[:reset]}"
     puts "Percentages tracked: #{STYLES[:bold]}#{STYLES[:cyan]}#{custom_percentages.map { |percentage| "#{percentage}%" }.join(', ')}#{STYLES[:reset]}"
     puts "\n"
   end
