@@ -9,8 +9,6 @@ STYLES = {
 
 CLEAR_COMMAND = RUBY_PLATFORM =~ /win32/ ? 'cls' : 'clear'
 
-PERCENTAGES = [20, 60, 80]
-
 SECONDS_PER_HOUR = 3600
 SECONDS_PER_MINUTE = 60
 
@@ -54,6 +52,10 @@ def get_task
   get_non_empty_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter the task:#{STYLES[:reset]} ")
 end
 
+def get_custom_percentages
+  input = get_user_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter the percentages (comma-separated, e.g., 10,40,50,90):#{STYLES[:reset]} ")
+  input.split(',').map(&:to_i)
+end
 
 def get_hours_input
   get_positive_integer_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter the amount of time available in hours (minimum is 1 hour):#{STYLES[:reset]} ")
@@ -67,8 +69,8 @@ def display_countdown(percentage, display_time)
   print "\r#{STYLES[:bold]}#{STYLES[:cyan]}#{percentage}% completion - You have #{display_time} remaining#{STYLES[:reset]}"
 end
 
-def countdown_display(total_seconds)
-  PERCENTAGES.each do |percentage|
+def countdown_display(total_seconds, custom_percentages)
+  custom_percentages.each do |percentage|
     time_remaining = (total_seconds * percentage / 100).to_i
 
     puts "#{STYLES[:bold]}#{STYLES[:yellow]}Countdown to #{percentage}% completion of the task:#{STYLES[:reset]}"
@@ -89,11 +91,12 @@ def countdown_display(total_seconds)
   end
 end
 
-def display_user_details(dev_name, task, hours)
+def display_user_details(dev_name, task, hours, custom_percentages)
   puts "\nThank you, #{STYLES[:bold]}#{STYLES[:cyan]}#{dev_name}!#{STYLES[:reset]} You've entered the following details:"
   puts "\nTask: #{STYLES[:bold]}#{STYLES[:cyan]}#{task}#{STYLES[:reset]}"
   puts "Time Available: #{STYLES[:bold]}#{STYLES[:cyan]}#{hours} #{hours == 1 ? 'hour' : 'hours'}#{STYLES[:reset]}"
   puts "Deadline in #{STYLES[:bold]}#{STYLES[:cyan]}#{format('%02d:%02d:%02d', hours, 0, 0)}#{STYLES[:reset]}"
+  puts "Percentages selected: #{STYLES[:bold]}#{STYLES[:cyan]}#{custom_percentages.map { |percentage| "#{percentage}%" }.join(', ')}#{STYLES[:reset]}"
   puts "\n"
 end
 
@@ -105,16 +108,23 @@ def run_countdown
   proceed = get_user_input("\n#{STYLES[:bold]}#{STYLES[:yellow]}Do you want to proceed? (Y/N):#{STYLES[:reset]} ").downcase
 
   if proceed == 'y'
-    dev_name = get_dev_name
-    task = get_task
-    hours = get_hours_input
 
     clear_terminal
 
-    display_user_details(dev_name, task, hours)
+    dev_name = get_dev_name
+    task = get_task
+    hours = get_hours_input
+    custom_percentages = get_custom_percentages
 
-    countdown_display(hours * SECONDS_PER_HOUR)
+    clear_terminal
+
+    display_user_details(dev_name, task, hours, custom_percentages)
+
+    countdown_display(hours * SECONDS_PER_HOUR, custom_percentages)
   else
+
+    clear_terminal
+
     puts "\n#{STYLES[:bold]}#{STYLES[:red]}Exiting the program. Goodbye!#{STYLES[:reset]}" 
   end
 end
