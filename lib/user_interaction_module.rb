@@ -13,7 +13,7 @@ module UserInteraction
   end
 
   def get_dev_name
-    get_non_empty_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter your dev name:#{STYLES[:reset]} ")
+    get_non_empty_input("\n#{STYLES[:bold]}#{STYLES[:cyan]}Enter your name:#{STYLES[:reset]} ")
   end
 
   def get_task
