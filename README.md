@@ -9,6 +9,10 @@ Task Tempus is a time management tool designed to assist developers in optimizin
 - **Motivational Prompts:** Visual cues at 20%, 60%, and 80% completion to keep you motivated.
 - **Distraction-Free Terminal:** Clear terminal functionality for an uninterrupted focus.
 
+## Demo
+
+You can check a demo uploaded in [here](https://www.terminalizer.com/view/4de7d4455867).
+
 ## Getting Started
 
 ### Prerequisites
