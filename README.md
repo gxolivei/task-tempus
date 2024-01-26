@@ -57,4 +57,4 @@ Thank you for choosing Task Tempus to enhance your time management skills! I hop
 
 Happy coding!
 
-Made with ❤️ by [gxolivei](https://www.github.com/gxolivei/).
+Made with ❤️ by [gxolivei](https://www.github.com/gxolivei/)
