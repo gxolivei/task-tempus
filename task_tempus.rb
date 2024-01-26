@@ -20,7 +20,7 @@ end
 
 def get_hours_input
   loop do
-    input = get_user_input("#{COLOR_BOLD}#{COLOR_GREEN}Enter the amount of time available in hours (minimum is 1 hour):#{COLOR_RESET}")
+    input = get_user_input("#{COLOR_BOLD}#{COLOR_GREEN}Enter the amount of time available in hours (minimum is 1 hour)#{COLOR_RESET}: ")
 
     if input.to_i.to_s == input && input.to_i.positive?
       return input.to_i
