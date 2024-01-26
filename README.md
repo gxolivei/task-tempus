@@ -36,7 +36,7 @@ cd task-tempus
 3. Run the program:
 
 ```
-ruby task_tempus.rb
+ruby main.rb
 ```
 
 ## Usage
