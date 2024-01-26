@@ -12,6 +12,14 @@ CLEAR_COMMAND = RUBY_PLATFORM =~ /win32/ ? 'cls' : 'clear'
 SECONDS_PER_HOUR = 3600
 SECONDS_PER_MINUTE = 60
 
+interrupted = false
+
+Signal.trap('INT') do
+  puts "\n#{STYLES[:bold]}#{STYLES[:red]}Program interrupted. Exiting gracefully.#{STYLES[:reset]}"
+  interrupted = true
+  exit(0)
+end
+
 def get_user_input(prompt)
   print "#{STYLES[:bold]}#{STYLES[:cyan]}#{prompt}#{STYLES[:reset]}"
   gets.chomp
@@ -101,9 +109,11 @@ def display_user_details(dev_name, task, hours, custom_percentages)
 end
 
 def run_countdown
-  puts "\n#{STYLES[:bold]}#{STYLES[:cyan]}Welcome to the Countdown Clock program!#{STYLES[:reset]}"
-  puts "#{STYLES[:bold]}This program helps you manage your time by providing countdowns for different task completion percentages.#{STYLES[:reset]}"
-  puts "#{STYLES[:bold]}#{STYLES[:underline]}You can enter your information below to get started.#{STYLES[:reset]}"
+  clear_terminal
+
+  puts "\n#{STYLES[:bold]}#{STYLES[:cyan]}Welcome to the Task Tempus program!#{STYLES[:reset]}"
+  puts "\n#{STYLES[:bold]}This program helps you manage your time by providing countdowns for different task completion percentages.#{STYLES[:reset]}"
+  puts "#{STYLES[:bold]}To interrupt and exit gracefully press CTRL+C at any time.#{STYLES[:reset]}"
 
   proceed = get_user_input("\n#{STYLES[:bold]}#{STYLES[:yellow]}Do you want to proceed? (Y/N):#{STYLES[:reset]} ").downcase
 
