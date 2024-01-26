@@ -6,7 +6,7 @@ class TaskTempus
   def run_countdown
     clear_terminal
   
-    puts "\n#{STYLES[:bold]}#{STYLES[:cyan]}Welcome to the Task Tempus program!#{STYLES[:reset]}"
+    puts "\n#{STYLES[:bold]}#{STYLES[:cyan]}Welcome to Task Tempus#{STYLES[:reset]}"
     puts "\n#{STYLES[:bold]}This program helps you manage your time by providing countdowns for different task completion percentages.#{STYLES[:reset]}"
     puts "#{STYLES[:bold]}To interrupt and exit gracefully press CTRL+C at any time.#{STYLES[:reset]}"
   
